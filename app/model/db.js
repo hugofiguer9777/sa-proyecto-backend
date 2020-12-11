@@ -6,11 +6,11 @@ function DataBaseHandler() {
 
 DataBaseHandler.prototype.createConnection = function () {
   this.connection = mysql.createConnection({
-    host:       process.env.MYSQL_HOST ? process.env.MYSQL_HOST : 'mysqldb', // 35.226.125.64
+    host:       process.env.MYSQL_HOST ? process.env.MYSQL_HOST : '35.226.125.64', // 35.226.125.64 - mysqldb
     user:       process.env.MYSQL_USER ? process.env.MYSQL_USER : 'root',
     password:   process.env.MYSQL_PASSWORD ? process.env.MYSQL_PASSWORD : 'adminSA',
     port:       process.env.MYSQL_PORT ? process.env.MYSQL_PORT : 3306,
-    database:   process.env.MYSQL_DATABASE ? process.env.MYSQL_DATABASE : 'proyectoSA'
+    database:   process.env.MYSQL_DATABASE ? process.env.MYSQL_DATABASE : 'proyectosa'
   });
 
   this.connection.connect(function (err) {

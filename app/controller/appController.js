@@ -33,7 +33,7 @@ exports.crear_usuario = function(req, res) {
     model.crear_usuario(nombre, apellido, email, password, celular, foto, tipo_usuario, function(err, msg) {
         if(err) { res.status(500).send(err); }
         else {
-            res.json({ message: 1 });
+            res.json(msg[0]);
         }
     });
 };

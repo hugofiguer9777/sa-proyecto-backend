@@ -136,6 +136,7 @@ CREATE PROCEDURE crear_usuario (
   IN `p_tipo_usuario` BOOLEAN)
 BEGIN
   INSERT INTO Usuario (nombre, apellido, email, contrasena, celular, foto, tipo_usuario) VALUES (p_nombre, p_apellido, p_email, p_contrasena, p_celular, p_foto, p_tipo_usuario);
+  SELECT * FROM Usuario WHERE email=p_email AND contrasena=p_contrasena;
 END //
 DELIMITER ;
 
@@ -154,6 +155,6 @@ CREATE PROCEDURE login_usuario (
   IN `p_email` VARCHAR(45),
   IN `p_contrasena` VARCHAR(45))
 BEGIN
-  SELECT IF(EXISTS(SELECT * FROM Usuario WHERE email=p_email AND contrasena=p_contrasena), 1, 0);
+  SELECT * FROM Usuario WHERE email=p_email AND contrasena=p_contrasena;
 END //
 DELIMITER ;
