@@ -10,4 +10,7 @@ module.exports = function(app) {
     app.route('/login')
         .post(controller.login_usuario);
 
+    app.route('/registrar')
+        .post(controller.crear_usuario);
+
 }

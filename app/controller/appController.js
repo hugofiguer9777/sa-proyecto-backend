@@ -19,3 +19,21 @@ exports.login_usuario = function(req, res) {
         }
     });
 };
+
+exports.crear_usuario = function(req, res) {
+    var body = req.body;
+    var nombre = body.nombre; 
+    var apellido = body.apellido; 
+    var email = body.email;
+    var password = body.password;
+    var celular = body.celular;
+    var foto = body.foto;
+    var tipo_usuario = body.tipo_usuario
+
+    model.crear_usuario(nombre, apellido, email, password, celular, foto, tipo_usuario, function(err, msg) {
+        if(err) { res.status(500).send(err); }
+        else {
+            res.json({ message: 1 });
+        }
+    });
+};

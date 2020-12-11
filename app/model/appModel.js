@@ -18,6 +18,19 @@ class Model {
         });
     }
 
+    static crear_usuario(nombre, apellido, email, password, celular, foto, tipo_usuario, result) {
+        handler.getConnection().query("CALL crear_usuario(?, ?, ?, ?, ?, ?, ?)", [nombre, apellido, email, password, celular, foto, tipo_usuario], function(err, res) {
+            if (err) {
+                console.log("Error: ", err);
+                result(err, null);
+            }
+            else {
+                console.log(res);
+                result(null, res);
+            }
+        });
+    }
+
 }
 
 module.exports = Model;
