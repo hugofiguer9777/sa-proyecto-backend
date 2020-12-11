@@ -1,17 +1,31 @@
-'user strict';
+const mysql = require("mysql");
 
-var mysql = require('mysql');
+function DataBaseHandler() {
+  this.connection = null;
+}
 
-var conexion = mysql.createConnection({
-    host:               '35.226.125.64',
-    user:               'root',
-    password:           'adminSA',
-    database:           'proyectoSA',
-    port:               3306
-});
+DataBaseHandler.prototype.createConnection = function () {
+  this.connection = mysql.createConnection({
+    host:       process.env.MYSQL_HOST ? process.env.MYSQL_HOST : '35.226.125.64',
+    user:       process.env.MYSQL_USER ? process.env.MYSQL_USER : 'root',
+    password:   process.env.MYSQL_PASSWORD ? process.env.MYSQL_PASSWORD : 'adminSA',
+    port:       process.env.MYSQL_PORT ? process.env.MYSQL_PORT : 3306,
+    database:   process.env.MYSQL_DATABASE ? process.env.MYSQL_DATABASE : 'proyectoSA'
+  });
 
-conexion.connect(function(err) {
-    if(err) throw err;
-});
+  this.connection.connect(function (err) {
+      if (err) {
+          console.error("error connecting " + err.stack);
+          return null;
+      }
+      console.log("connected as id " + this.threadId);
+  });
+  return this.connection;
+};
 
-module.exports = conexion;
+DataBaseHandler.prototype.getConnection = function () {
+  if(this.connection) return this.connection;
+  return this.createConnection();
+}
+
+module.exports = DataBaseHandler;
