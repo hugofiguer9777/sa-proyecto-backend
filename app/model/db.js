@@ -6,7 +6,7 @@ function DataBaseHandler() {
 
 DataBaseHandler.prototype.createConnection = function () {
   this.connection = mysql.createConnection({
-    host:       process.env.MYSQL_HOST ? process.env.MYSQL_HOST : '35.226.125.64',
+    host:       process.env.MYSQL_HOST ? process.env.MYSQL_HOST : 'database',
     user:       process.env.MYSQL_USER ? process.env.MYSQL_USER : 'root',
     password:   process.env.MYSQL_PASSWORD ? process.env.MYSQL_PASSWORD : 'adminSA',
     port:       process.env.MYSQL_PORT ? process.env.MYSQL_PORT : 3306,
