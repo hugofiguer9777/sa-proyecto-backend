@@ -1,9 +1,13 @@
 'use strict';
+
 module.exports = function(app) {
 
-    var routes = require('../controller/appController');
+    var controller = require('../controller/appController');
 
     app.route('/')
-        .get(routes.index);
+        .get(controller.index);
+
+    app.route('/login')
+        .post(controller.login_usuario);
 
 }
