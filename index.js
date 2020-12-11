@@ -1,5 +1,4 @@
 const express = require('express');
-// const mysql = require('./app/model/db');
 const app = express();
 const bodyParser = require('body-parser');
 
@@ -14,5 +13,5 @@ app.listen(port, function() {
 app.use(cors());
 app.use(bodyParser.json({ limit: '5mb', extended: true }));
 
-// var routes = require('./app/routes/appRoutes');
-// routes(app);
+var routes = require('./app/routes/appRoutes');
+routes(app);
